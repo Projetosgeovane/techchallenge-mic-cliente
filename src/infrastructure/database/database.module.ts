@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { Cliente } from "src/domain/cliente/entities/cliente.entity";
 
 @Module({
     imports: [
@@ -10,8 +11,9 @@ import { TypeOrmModule } from "@nestjs/typeorm";
             username: 'postgres',
             password: '123456',
             database: 'client',
-            entities: [],
+            entities: [Cliente],
             synchronize: true,
+            logging: true
         })
 
     ]

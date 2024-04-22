@@ -10,6 +10,7 @@ import {
 import { ClienteService } from './use-cases/cliente.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
+import { Cliente } from './entities/cliente.entity';
 
 @Controller('cliente')
 export class ClienteController {
@@ -21,13 +22,13 @@ export class ClienteController {
   }
 
   @Get()
-  findAll() {
+  findAll(): Promise<Cliente[]> {
     return this.clienteService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clienteService.findOne(+id);
+  findById(@Param('id') id: string) {
+    return this.clienteService.findById(+id);
   }
 
   @Patch(':id')
