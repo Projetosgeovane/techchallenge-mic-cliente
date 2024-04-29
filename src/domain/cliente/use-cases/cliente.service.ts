@@ -27,7 +27,11 @@ export class ClienteService {
     return await this.clienteRepository.findAll()
   }
 
-  findById(id: number): Promise<Cliente | null> {
+  async findById(id: number): Promise<Cliente | null> {
+    const cliente = await this.clienteRepository.findById(id);
+    if (!cliente) {
+      throw new Error('Cliente not found');
+    }
     return this.clienteRepository.findById(id);
   }
 
